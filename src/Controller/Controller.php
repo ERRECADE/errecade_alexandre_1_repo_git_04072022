@@ -1,11 +1,14 @@
 <?php
+namespace App\Controller; 
 // class construction habituelle 
+use App\Model\Model;
+use App\View\View ;
 abstract class Controller{
 
     protected $model;
-    protected $view;
     protected $paramGet;
     protected $paramPost;
+    protected $twig;
 
     public function __construct(){
         if(!empty($_GET)){
@@ -25,6 +28,9 @@ abstract class Controller{
             $message = $this->model->$method($this->paramPost);
             $this->view->message($message);
         }
+
+        $loader = new \Twig\Loader\FilesystemLoader('../public/Html/');
+        $this->twig = new \Twig\Environment($loader);
 
     }
 
