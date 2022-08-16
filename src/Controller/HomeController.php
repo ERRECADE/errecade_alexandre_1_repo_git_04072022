@@ -1,15 +1,13 @@
 <?php
-require "vendor/autoload.php";
+namespace App\Controller; 
 
-include 'Model-repo/HomeModel.php';
-include 'View-Service/HomeView.php';
+use App\Model\HomeModel ;
 
 class HomeController extends Controller{
 
-
     public function __construct(){
+        parent::__construct();
         $this->model = new HomeModel();
-        $this->view = new HomeView();
     }
 
     /**
@@ -18,7 +16,8 @@ class HomeController extends Controller{
      * @return void
      */
     public function indexAction(){
-        $this->view->home();
+        echo $this->twig->render('home.html.twig');
     }
+
 
 }

@@ -645,6 +645,11 @@ progress {
   .container-sm, .container {
     max-width: 540px;
   }
+  #card-home{
+    margin-top: 5%;
+    margin-left: 0%;
+  }
+  
 }
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
@@ -2131,11 +2136,19 @@ progress {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+  #card-home{
+    margin-top: 5%;
+    margin-left: 0%;
+  }
 }
 @media (max-width: 767.98px) {
   .table-responsive-md {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+  #card-home{
+    margin-top: 5%;
+    margin-left: 0%;
   }
 }
 @media (max-width: 991.98px) {
@@ -4663,6 +4676,10 @@ textarea.form-control-lg {
 .card-group > .card:not(:first-child) .card-footer {
     border-bottom-left-radius: 0;
   }
+  #card-home{
+    margin-top: 5%;
+    margin-left: 5%;
+  }
 }
 
 .accordion-button {
@@ -5614,6 +5631,10 @@ textarea.form-control-lg {
   .modal-sm {
     max-width: 300px;
   }
+  #card-home{
+    margin-top: 5%;
+    margin-left: 0%;
+  }
 }
 @media (min-width: 992px) {
   .modal-lg,
@@ -5668,6 +5689,10 @@ textarea.form-control-lg {
   .modal-fullscreen-sm-down .modal-footer {
     border-radius: 0;
   }
+  #card-home{
+    margin-top: 5%;
+    margin-left: 0%;
+  }
 }
 @media (max-width: 767.98px) {
   .modal-fullscreen-md-down {
@@ -5689,6 +5714,9 @@ textarea.form-control-lg {
   }
   .modal-fullscreen-md-down .modal-footer {
     border-radius: 0;
+  }
+  #card-home{
+    margin-top: 5%;
   }
 }
 @media (max-width: 991.98px) {
@@ -11410,7 +11438,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/header-bg.jpg");
+  background-image: url("../assets/img/photo-de-couverture-ordinateur_2.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11441,6 +11469,11 @@ header.masthead .masthead-heading {
     font-style: italic;
     line-height: 2.25rem;
     margin-bottom: 2rem;
+  }
+  .header-h {
+    font-size: 2.25rem;
+    font-style: italic;
+    color :#ffc800;
   }
   header.masthead .masthead-heading {
     font-size: 4.5rem;
@@ -11776,4 +11809,83 @@ section#contact form#contactForm :-ms-input-placeholder {
   text-align: center;
   font-size: 0.9rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+/* card */
+#card-home{
+  margin-top: 5%;
+  margin-left: 30%;
+}
+
+/* sign-in */
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.b-example-divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }

@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block page %}
+    <!-- Navigation admin-->
+
+    <nav class="navbar navbar-expand-lg " id="mainNav" style="background-color: grey;">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase">
+                    <li class="nav-item"><a class="nav-link" href="index.php?controller=Admin&action=addBlog">Ajout nouveaux blog </a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?controller=Admin&action=commentaire">commentaire </a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?controller=Admin&action=updateBlog">update/delete blog </a></li>
+                    <!--<li class="nav-item"><a class="nav-link" href="index.php?controller=Blog&action=blog">ajout admin ?  </a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+{% endblock %}
