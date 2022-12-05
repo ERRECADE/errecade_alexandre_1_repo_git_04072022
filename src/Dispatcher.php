@@ -4,25 +4,61 @@ namespace App;
 
 use App\Controller\Controller;
 use App\Model\Model;
+
+use App\Controller\AdminController;
+use App\Controller\BlogController;
+use App\Controller\ConnexionController;
+use App\Controller\HomeController;
 // Ici tous les controller qui correspondent a une page du site . 
 class Dispatcher{
 
     public function dispatch(){
-        error_log("1");
 
-            $controller = $_GET['controller']??'home';// si une perssone vient ici directement 
-            $controller = 'App\Controller\\'.ucfirst($controller) . 'Controller';
 
-            $action = $_GET['action']??'index';
-            $action = ucfirst($action) . 'Action';
-            error_log($controller);
-            error_log($action);
-        
-        
-        
+        $url = $_SERVER['REQUEST_URI'];
 
-        $my_controller = new $controller();
-        $my_controller->$action();
+        if($url == '/admin/blog/add'){
+            $controller = new AdminController;
+            $controller->addBlogAction();
+        }
+        if($url == '/admin/commentaire'){
+            $controller = new AdminController;
+            $controller->commentaireAction();
+        }
+        if($url == '/admin/update/blog'){
+            $controller = new AdminController;
+            $controller->updateBlogAction();
+        }
+        if (preg_match('/^\/admin\/update\/blog\/modal\/(\d+)$/', $url, $matches)) {
+            $id = (int)$matches[1];
+            $controller = new AdminController;
+            $controller->updateblogModalAction($id);
+        }
+        if($url == '/'){
+            $controller = new HomeController;
+            $controller->indexAction();
+        }
+        if($url == '/blog/total'){
+            $controller = new BlogController;
+            $controller->blogAction();
+        }
+        if (preg_match('/^\/blog\/modal\/(\d+)$/', $url, $matches)) {
+            $id = (int)$matches[1];
+            $controller = new BlogController;
+            $controller->blogModalAction($id);
+        }
+        if($url == '/connexion'){
+            $controller = new ConnexionController;
+            $controller->connexionAction();
+        }
+        if($url == '/inscription'){
+            $controller = new ConnexionController;
+            $controller->inscriptionAction();
+        }
+
+        // $controller = $_GET['controller']??'home';
+        // $controller = 'App\Controller\\'.ucfirst($controller) . 'Controller';
+
     }        
 
 }

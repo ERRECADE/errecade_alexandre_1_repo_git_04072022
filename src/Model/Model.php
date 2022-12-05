@@ -3,19 +3,23 @@ namespace App\Model;
 
 // connexion base de donnés 
 abstract class Model {
-       // mettre bonne base
+
     protected $connexion;
     protected $requete;
 
-    public function __construct(){//mettre bonne  base 
-            define('SERVER',"localhost");
-            //define('PORT',"3306");
-            define('USER',"root");
-            define('PASSWORD',"");
-            define('BASE',"errecade_projet_5");
+    public function __construct(){
+
+        // if (!defined('constant')) define('SERVER',"localhost");
+        // if (!defined('constant')) define('USER',"root");
+        // if (!defined('constant')) define('PASSWORD',"");
+        // if (!defined('constant')) define('BASE',"errecade_projet_5");
+        //     define('SERVER',"localhost");
+        //     //define('PORT',"3306");
+        //     define('USER',"root");
+        //     define('PASSWORD',"");
+        //     define('BASE',"errecade_projet_5");
 
         try {
-                error_log('la');
                 $this->connexion = new \PDO
                 ("mysql:host=" .
                 SERVER . ";dbname=" .

@@ -28,6 +28,16 @@ abstract class Controller{
             $message = $this->model->$method($this->paramPost);
             $this->view->message($message);
         }
+        if (isset($this->paramPost["id"])){
+            $method=$this->paramPost["id"];
+            $message = $this->model->$method($this->paramPost);
+            $this->view->message($message);
+        }
+        // if (isset($this->paramGet["id"])){
+        //     $method=$this->paramGet["id"];
+        //     $message = $this->model->$method($this->paramGet);
+        //     $this->view->message($message);
+        // }
 
         $loader = new \Twig\Loader\FilesystemLoader('../public/Html/');
         $this->twig = new \Twig\Environment($loader);
