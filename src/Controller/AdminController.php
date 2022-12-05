@@ -23,7 +23,7 @@ class AdminController extends Controller{
 
 
     /**
-     * Gestion de l'affichage de la page d'accueil
+     * Ajout des blogs depuis l'admin
      * 
      * @return void
      */
@@ -43,7 +43,11 @@ class AdminController extends Controller{
         }
         echo $this->twig->render('adminAddBlog.html.twig');
     }
-
+    /**
+     * affichage des commentaire dans l'admin
+     * 
+     * @return void
+     */
     public function commentaireAction(){
         if(isset($_POST['val']) || isset($_POST['inval'] )){
             $validation = isset($_POST['val']) ? 1 : 0;
@@ -55,6 +59,11 @@ class AdminController extends Controller{
         echo $this->twig->render('adminCommentaire.html.twig', ['commentaire' => $commentaire]);
     }
 
+    /**
+     * affichage des blogs dans l'admin
+     * 
+     * @return void
+     */
     public function updateBlogAction(){
         $blogs = $this->blog->GetBlogupdate();
 
@@ -69,7 +78,7 @@ class AdminController extends Controller{
 
 
     /**
-     * Gestion de l'affichage de la page modal 
+     * Gupdate des blogs depuis l'admin 
      * 
      * @return void
      */

@@ -9,7 +9,6 @@ use App\Controller\AdminController;
 use App\Controller\BlogController;
 use App\Controller\ConnexionController;
 use App\Controller\HomeController;
-// Ici tous les controller qui correspondent a une page du site . 
 class Dispatcher{
 
     public function dispatch(){
@@ -55,9 +54,6 @@ class Dispatcher{
             $controller = new ConnexionController;
             $controller->inscriptionAction();
         }
-
-        // $controller = $_GET['controller']??'home';
-        // $controller = 'App\Controller\\'.ucfirst($controller) . 'Controller';
 
     }        
 

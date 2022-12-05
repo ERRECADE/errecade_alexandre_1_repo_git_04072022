@@ -14,7 +14,7 @@ class ConnexionController extends Controller{
     }
 
     /**
-     * Gestion de l'affichage de la page d'accueil
+     * connexion espace admin
      * 
      * @return void
      */
@@ -47,7 +47,7 @@ class ConnexionController extends Controller{
         
     }
     /**
-     * Gestion de l'affichage de la page d'accueil
+     * inscriptions d'un user 
      * 
      * @return void
      */
@@ -65,7 +65,6 @@ class ConnexionController extends Controller{
                 'password' => $password
             );
             $this->user->AddInscription($params);
-            // mettre des erreures si mauvaise inscriptions avec if et else un peut comme a la co 
         }
         echo $this->twig->render('inscription.html.twig');
     }

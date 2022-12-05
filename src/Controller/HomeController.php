@@ -9,7 +9,7 @@ class HomeController extends Controller{
     }
 
     /**
-     * Gestion de l'affichage de la page d'accueil
+     * page d'acceuil
      * 
      * @return void
      */

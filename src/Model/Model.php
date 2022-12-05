@@ -8,17 +8,6 @@ abstract class Model {
     protected $requete;
 
     public function __construct(){
-
-        // if (!defined('constant')) define('SERVER',"localhost");
-        // if (!defined('constant')) define('USER',"root");
-        // if (!defined('constant')) define('PASSWORD',"");
-        // if (!defined('constant')) define('BASE',"errecade_projet_5");
-        //     define('SERVER',"localhost");
-        //     //define('PORT',"3306");
-        //     define('USER',"root");
-        //     define('PASSWORD',"");
-        //     define('BASE',"errecade_projet_5");
-
         try {
                 $this->connexion = new \PDO
                 ("mysql:host=" .

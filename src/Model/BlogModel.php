@@ -1,16 +1,11 @@
 <?php
 namespace App\Model;
 
-// use App\Controller\BlogController;
-// use App\View\BlogView ;
-
 use App\Entity\Blog;
 use App\Entity\User;
 use App\Entity\Commentaire;
 
-
 use DateTime; 
-
 class BlogModel extends Model{
 
 
