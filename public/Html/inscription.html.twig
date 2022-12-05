@@ -1,26 +1,35 @@
 {% extends "baseneutre.html.twig" %}
 {% block page %}
   <main class="form-signin w-100 m-auto">
-    <form>
+    <form action="#" method="POST">
       <h1 class="h3 mb-3 fw-normal">Inscriptions</h1>
       <div class="form-floating">
-        <input type="text" class="form-control" id="floatingName" placeholder="pierre">
+        <input type="text" class="form-control" id="floatingName" name="floatingName" placeholder="pierre">
         <label for="floatingName">Nom</label>
       </div>
-      <div class="form-floating">
-        <input type="text" class="form-control" id="floatingPrenom" placeholder="obama">
+      <div class="form-floating"> 
+        <input type="text" class="form-control" id="floatingPrenom" name="floatingPrenom" placeholder="obama">
         <label for="floatingPrenom">Prenom</label>
       </div>
 
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <input type="email" class="form-control" id="floatingInput" name="floatingInput" placeholder="name@example.com">
         <label for="floatingInput">Adresse email</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <input type="password" class="form-control" id="floatingPassword" name="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Mot de passe</label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">inscriptions</button>
     </form>
   </main>
+
+  <div class="form-signin w-100 m-auto"> 
+  <p> ------------------------------------------------ </p>
+
+</div>
+<div class="form-signin w-100 m-auto"> 
+  <p> Retour a la page d'acceuil </p>
+  <a type="button" class="btn btn-primary" role="button" href="/">Acceuil</a>
+</div>
 {% endblock %}

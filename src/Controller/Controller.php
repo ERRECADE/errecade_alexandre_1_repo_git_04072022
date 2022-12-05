@@ -1,8 +1,5 @@
 <?php
 namespace App\Controller; 
-// class construction habituelle 
-use App\Model\Model;
-use App\View\View ;
 abstract class Controller{
 
     protected $model;
@@ -25,6 +22,11 @@ abstract class Controller{
 
         if (isset($this->paramPost["action"])){
             $method=$this->paramPost["action"];
+            $message = $this->model->$method($this->paramPost);
+            $this->view->message($message);
+        }
+        if (isset($this->paramPost["id"])){
+            $method=$this->paramPost["id"];
             $message = $this->model->$method($this->paramPost);
             $this->view->message($message);
         }

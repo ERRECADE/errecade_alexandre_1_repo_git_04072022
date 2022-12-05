@@ -11889,3 +11889,14 @@ section#contact form#contactForm :-ms-input-placeholder {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+
+.cardModal{
+  margin: 5em;
+  margin-left: 15em;
+  width: 55em;
+}
+
+.cardTitle{
+  text-align: center;
+  margin-top: 2em;
+}

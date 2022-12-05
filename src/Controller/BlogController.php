@@ -1,38 +1,52 @@
 <?php
 namespace App\Controller; 
 
-use App\Model\BlogModel ;
+use App\Model\BlogModel;
+use App\Model\UserModel;
+use App\Model\CommentaireModel;
 
 class BlogController extends Controller{
 
     public function __construct(){
         parent::__construct();
-        $this->model = new BlogModel();
+        $this->blog = new BlogModel();
+        $this->user = new UserModel();
+        $this->commentaire = new CommentaireModel();
 
     }
 
     /**
-     * Gestion de l'affichage de la page d'accueil
+     * affichage des blogs 
      * 
      * @return void
      */
     public function blogAction(){
-        $blogs = $this->model->GetViewBlogs(); 
-        //$commentaires = $this->model->GetViewCommentaire();
+        $blogs = $this->blog->GetViewBlogs(); 
         echo $this->twig->render('blogTotal.html.twig',['blogs' => $blogs]);
+    }
+    /**
+     * affichage de la page modal des blogs
+     * 
+     * @return void
+     */
+    public function blogModalAction(int $id){
+        $blogs = $this->blog->GetModalBlogs($id); 
+        $commentaires = $this->commentaire->GetCommentaireBlogs($id); 
 
-        if($_POST['nom'] && $_POST['commentaire']){
-            $nom = $_POST['nom'];
+        if(isset($_POST['titre']) && isset($_POST['commentaire'])){
+            $titre = $_POST['titre'];
             $commentaires = $_POST['commentaire'];
-            //$blogId = $_POST['blogId'];
+            $blogId = $id;
             $params = array(
-                'nom' => $nom ,
-                'commentaire' => $commentaires
-                //'blogId' => $blogId
+                'titre' => $titre ,
+                'commentaire' => $commentaires,
+                'blogId' => $blogId,
+                'userId' => 1
+                
             );
-            $this->model->AddCommeBlogs($params);
+            $this->commentaire->AddCommeBlogs($params);
         }
-
+        echo $this->twig->render('blogTotalModal.html.twig',['blogs' => $blogs,'commentaires' => $commentaires]);
     }
 
 }

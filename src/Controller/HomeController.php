@@ -1,17 +1,15 @@
 <?php
 namespace App\Controller; 
 
-use App\Model\HomeModel ;
 
 class HomeController extends Controller{
 
     public function __construct(){
         parent::__construct();
-        $this->model = new HomeModel();
     }
 
     /**
-     * Gestion de l'affichage de la page d'accueil
+     * page d'acceuil
      * 
      * @return void
      */
