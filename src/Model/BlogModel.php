@@ -1,41 +1,42 @@
 <?php
+
 namespace App\Model;
 
 use App\Entity\Blog;
 use App\Entity\User;
 use App\Entity\Commentaire;
 
-use DateTime; 
-class BlogModel extends Model{
+use DateTime;
 
-
+class BlogModel extends Model
+{
     public static function hydrateBlog(array $blogArray, $withJoins = true): Blog
     {
         $blog = new Blog();
-        if($blogArray['blogId'] !== null){
+        if ($blogArray['blogId'] !== null) {
             $blog->setId($blogArray['blogId']);
-        }else{
+        } else {
             $blog->setId(null);
         }
-        $blog->setTitre(isset($blogArray['blogTitre'])? $blogArray['blogTitre']:null);
-        $blog->setChapo(isset($blogArray['blogChapo'])? $blogArray['blogChapo']:null);
-        $blog->setTexte(isset($blogArray['blogTexte'])? $blogArray['blogTexte']:null);
-        $blog->setCreatedAt(new \datetime (isset($blogArray['blogCreatedAt'])? $blogArray['blogCreatedAt']:null));
-        $blog->setUpdateAt(new \datetime (isset($blogArray['blogUpdateAt'])? $blogArray['blogUpdateAt']:null));
-        if(isset($blogArray['commentaireId']) && $withJoins ){
+        $blog->setTitre(isset($blogArray['blogTitre']) ? $blogArray['blogTitre'] : null);
+        $blog->setChapo(isset($blogArray['blogChapo']) ? $blogArray['blogChapo'] : null);
+        $blog->setTexte(isset($blogArray['blogTexte']) ? $blogArray['blogTexte'] : null);
+        $blog->setCreatedAt(new \datetime(isset($blogArray['blogCreatedAt']) ? $blogArray['blogCreatedAt'] : null));
+        $blog->setUpdateAt(new \datetime(isset($blogArray['blogUpdateAt']) ? $blogArray['blogUpdateAt'] : null));
+        if (isset($blogArray['commentaireId']) && $withJoins) {
             //Left join
-            CommentaireModel::hydrateCommentaire($blogArray); 
+            CommentaireModel::hydrateCommentaire($blogArray);
         }
-        if(isset($blogArray['userId']) && $withJoins ){
+        if (isset($blogArray['userId']) && $withJoins) {
             //Left join
-            $user = UserModel::hydrateUser($blogArray); 
+            $user = UserModel::hydrateUser($blogArray);
             $blog->setUser($user);
         }
         return $blog;
-
     }
 
-    public function GetViewBlogs(){
+    public function GetViewBlogs()
+    {
         try {
             $sth = $this->connexion->prepare(
                 "SELECT id as blogId,
@@ -49,15 +50,16 @@ class BlogModel extends Model{
             $sth->execute();
 
             $blogs = [];
-            foreach($sth->fetchAll() as $blogArray){
+            foreach ($sth->fetchAll() as $blogArray) {
                 $blogs[] = self::hydrateBlog($blogArray);
             }
             return $blogs;
         } catch (\Exception $e) {
             die('Erreur:' . $e->getMessage());
-        }  
+        }
     }
-    public function GetModalBlogs($id){
+    public function GetModalBlogs($id)
+    {
         try {
             $sth = $this->connexion->prepare(
                 "SELECT b.id as blogId,
@@ -79,19 +81,19 @@ class BlogModel extends Model{
                 LEFT JOIN users u ON u.id = b.users_id
                 where b.id = :id"
             );
-            $sth->execute(['id' => $id]); 
+            $sth->execute(['id' => $id]);
             $blogs = [];
-            foreach($sth->fetchAll() as $blogArray){
+            foreach ($sth->fetchAll() as $blogArray) {
                 $blogs[] = $this->hydrateBlog($blogArray);
             }
             return $blogs;
         } catch (\Exception $e) {
             die('Erreur:' . $e->getMessage());
-        }  
+        }
     }
 
-    //adminController 
-    public function GetBlogupdateId(int $id) :Blog
+    //adminController
+    public function GetBlogupdateId(int $id): Blog
     {
         try {
             $sth = $this->connexion->prepare(
@@ -106,7 +108,6 @@ class BlogModel extends Model{
             );
             $sth->execute(['id' => $id]);
             return $this->hydrateBlog($sth->fetch());
-
         } catch (\Exception $e) {
             die('Erreur:' . $e->getMessage());
         }
@@ -120,7 +121,7 @@ class BlogModel extends Model{
         $chapo =$params['chapo'] ;
         $texte =$params['texte'] ;
         $users_id = $params['userId'];
-        
+
         try {
             $sth = $this->connexion->prepare(
                 "INSERT INTO `blog`
@@ -132,10 +133,10 @@ class BlogModel extends Model{
         } catch (\Exception $e) {
             die('Erreur:' . $e->getMessage());
         }
-        
     }
 
-    public function GetBlogupdate(){
+    public function GetBlogupdate()
+    {
         try {
             $sth = $this->connexion->prepare(
                 "SELECT b.id as blogId,
@@ -148,17 +149,17 @@ class BlogModel extends Model{
             );
             $sth->execute();
             $blogs = [];
-            foreach($sth->fetchAll() as $blogArray){
+            foreach ($sth->fetchAll() as $blogArray) {
                 $blogs[] = $this->hydrateBlog($blogArray);
             }
             return $blogs;
         } catch (\Exception $e) {
             die('Erreur:' . $e->getMessage());
         }
-        
     }
 
-    public function NewUpdateBlogs($params) :void {
+    public function NewUpdateBlogs($params): void
+    {
         $titre =$params['titre'] ;
         $chapo =$params['chapo'] ;
         $texte =$params['texte'] ;
@@ -177,14 +178,13 @@ class BlogModel extends Model{
         }
     }
 
-    public function DeleteBlogs($id){
-        
+    public function DeleteBlogs($id)
+    {
         try {
             $sth = $this->connexion->prepare(
                 "DELETE FROM `blog` WHERE (`id` = :id)"
             );
             $sth->execute(['id' => $id]);
-            
         } catch (\Exception $e) {
             die('Erreur:' . $e->getMessage());
         }
