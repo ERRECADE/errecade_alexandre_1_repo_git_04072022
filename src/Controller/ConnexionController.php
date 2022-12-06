@@ -1,12 +1,15 @@
 <?php
-namespace App\Controller; 
+
+namespace App\Controller;
 
 use App\Model\BlogModel;
 use App\Model\UserModel;
 use App\Model\CommentaireModel;
-class ConnexionController extends Controller{
 
-    public function __construct(){
+class ConnexionController extends Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->blog = new BlogModel();
         $this->user = new UserModel();
@@ -15,11 +18,12 @@ class ConnexionController extends Controller{
 
     /**
      * connexion espace admin
-     * 
+     *
      * @return void
      */
-    public function connexionAction(){
-        if(isset($_POST['floatingInput']) && isset($_POST['floatingPassword'])){
+    public function connexionAction()
+    {
+        if (isset($_POST['floatingInput']) && isset($_POST['floatingPassword'])) {
             $email= $_POST['floatingInput'];
             $password = $_POST['floatingPassword'];
             $params = array(
@@ -28,32 +32,29 @@ class ConnexionController extends Controller{
             );
             $user = $this->user->NewConnexion($params);
 
-            if($user == true){
-                $verifyPassword = password_verify($password,$user->getPassword());
-                if($verifyPassword  ){
+            if ($user == true) {
+                $verifyPassword = password_verify($password, $user->getPassword());
+                if ($verifyPassword) {
                     $_SESSION['user'] = $user;
 
                     header('Location: /admin/blog/add');
-
-                }else{
+                } else {
                     header('Location: /connexion');
                 }
-            }else{
+            } else {
                 header('Location: /connexion');
             }
         }
         echo $this->twig->render('connexion.html.twig');
-        
-        
     }
     /**
-     * inscriptions d'un user 
-     * 
+     * inscriptions d'un user
+     *
      * @return void
      */
-    public function inscriptionAction(){
-
-        if(isset($_POST['floatingName']) && isset($_POST['floatingInput'])){
+    public function inscriptionAction()
+    {
+        if (isset($_POST['floatingName']) && isset($_POST['floatingInput'])) {
             $nom = $_POST['floatingName'];
             $prenom = $_POST['floatingPrenom'];
             $email = $_POST['floatingInput'];
@@ -68,7 +69,4 @@ class ConnexionController extends Controller{
         }
         echo $this->twig->render('inscription.html.twig');
     }
-
-
-
 }

@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^7.4",
         "composer/semver": "^3.3",
         "php-extended/php-datetime-parser-object": "^4.0",
-        "berlioz/flash-bag": "^1.3"
+        "berlioz/flash-bag": "^1.3",
+        "friendsofphp/php-cs-fixer": "^3.13"
     },
 
     "autoload": {
