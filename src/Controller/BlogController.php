@@ -39,12 +39,12 @@ class BlogController extends Controller
         if (isset($_POST['titre']) && isset($_POST['commentaire'])) {
             $titre = $_POST['titre'];
             $commentaires = $_POST['commentaire'];
-            $blogId = $id;
+            $blogId = $id;      
             $params = array(
                 'titre' => $titre ,
                 'commentaire' => $commentaires,
                 'blogId' => $blogId,
-                'userId' => 1
+                'userId' => 8
 
             );
             $this->commentaire->AddCommeBlogs($params);
