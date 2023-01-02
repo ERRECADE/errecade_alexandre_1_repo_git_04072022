@@ -96,7 +96,10 @@ class AdminController extends Controller
 
             $this->blog->NewUpdateBlogs($params);
 
-            header('Location: /admin/update/blog');
+            $return = 
+            " <script> alert('Blog mis a jour.');
+            location.href = '/admin/update/blog'  </script>";
+            echo $return;
         }
         echo $this->twig->render('blogUpdate.html.twig', ['blog' => $blog]);
     }

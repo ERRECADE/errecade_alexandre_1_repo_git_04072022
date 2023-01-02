@@ -37,12 +37,21 @@ class ConnexionController extends Controller
                 if ($verifyPassword) {
                     $_SESSION['user'] = $user;
 
-                    header('Location: /admin/blog/add');
+                    $return = 
+                    " <script> alert('Connexion réussi');
+                    location.href = '/admin/blog/add'  </script>";
+                    echo $return;
                 } else {
-                    header('Location: /connexion');
+                    $return = 
+                    " <script> alert('Un problème est survenu lors de la connexion veuillez à nouveau essayer.');
+                    location.href = '/connexion'  </script>";
+                    echo $return;
                 }
             } else {
-                header('Location: /connexion');
+                $return = 
+                " <script> alert('Votre compte n'existe pas ou n'est pas encore validé.');
+                location.href = '/connexion'  </script>";
+                echo $return;
             }
         }
         echo $this->twig->render('connexion.html.twig');
